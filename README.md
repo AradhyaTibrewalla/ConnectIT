@@ -1,1 +1,2 @@
 # ConnectIT
+This project is a Python-based file encryption and folder management tool using Tkinter for the GUI. It allows users to securely save files into a hidden folder, encrypt them using the cryptography library, and manage access through a password protected interface. The project includes features to save, encrypt, and later decrypt files, while also providing the option to open the hidden folder through the interface. The design emphasizes user experience with a modern, appealing layout.
