@@ -6,14 +6,12 @@ from tkinter import *
 import bcrypt
 from cryptography.fernet import Fernet
 
-# Folder and file paths
 secured_folder = "secured_folder"
 hidden_folder = os.path.join(secured_folder, ".hidden_folder")
 password_file = "encryption.txt"
 key_file = 'secret.key'
 path_file = 'path.txt'
 
-# Ensure the secured folder and hidden folder exist
 if not os.path.exists(secured_folder):
     os.makedirs(secured_folder)
 if not os.path.exists(hidden_folder):
@@ -80,7 +78,6 @@ def open_folder():
             l6.config(text="Failed to retrieve folder path.")
             return
         
-        # Open the hidden folder
         abs_path = os.path.abspath(folder_path)
         if sys.platform == "win32":
             subprocess.Popen(f'explorer "{abs_path}"')
@@ -97,7 +94,6 @@ def open_folder():
     except Exception as e:
         l6.config(text=f"Failed to open folder: {str(e)}")
 
-# Tkinter window setup with improved design
 root = Tk()
 grey = "#343a40"
 accent_color = "#ffc107"
@@ -156,11 +152,9 @@ def show_file_input_and_options():
     for widget in root.winfo_children():
         widget.destroy()
 
-    # Frame for file input
     frame_file_input = Frame(root, bg=grey)
     frame_file_input.place(x=50, y=50, width=500, height=150)
 
-    # File location label and entry
     l4 = Label(frame_file_input, text="Enter File Location:", font=("Arial", 16), fg=text_color, bg=grey)
     e2 = Entry(frame_file_input, font=("Arial", 14), width=40, bg="#495057", fg=text_color, insertbackground=text_color)
     b_save = Button(frame_file_input, text="Save File", font=("Arial", 14, "bold"), bg=accent_color, fg=grey, command=save_file)
@@ -169,11 +163,9 @@ def show_file_input_and_options():
     e2.pack(pady=10)
     b_save.pack(pady=10)
 
-    # Frame for folder management
     frame_folder_management = Frame(root, bg=grey)
     frame_folder_management.place(x=50, y=250, width=500, height=200)
 
-    # Folder management label and buttons
     l6 = Label(frame_folder_management, text="", font=("Arial", 14), fg=text_color, bg=grey)
     l_open_folder = Label(frame_folder_management, text="Do you want to open the folder?", font=("Arial", 16), fg=text_color, bg=grey)
     b_open_folder = Button(frame_folder_management, text="Open Folder", font=("Arial", 14, "bold"), bg=accent_color, fg=grey, command=open_folder)
